@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.NewsFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/en_tv_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="News:"/>
+        <EditText
+            android:id="@+id/en_et_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Type in English"/>
+        <TextView
+            android:id="@+id/kn_tv_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="News:"/>
+        <EditText
+            android:id="@+id/kn_et_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Type in Kannada"/>
+
+<Button
+    android:id="@+id/btn_submit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Submit"/>
+    </LinearLayout>
+
+</FrameLayout>

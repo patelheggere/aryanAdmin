@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">aryanadmin</string>
+    <string name="title_home">News</string>
+    <string name="title_dashboard">Job</string>
+    <string name="title_notifications">Events</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dept">Department</string>
+    <string name="title">Title</string>
+    <string name="quali">Qualification</string>
+    <string name="noti_date">Notification Date:</string>
+    <string name="last_date">Last Date:</string>
+    <string name="exam_mode">Exam mode</string>
+    <string name="payment">Payment Type:</string>
+    <string name="documents">Documents;</string>
+    <string name="exam_date">Exam Date:</string>
+    <string name="no_post">No of Post:</string>
+    <string name="website">Website:</string>
+    <string name="date_format">dd/mm/yyyy</string>
+    <string name="gallery">Gallery</string>
+</resources>
