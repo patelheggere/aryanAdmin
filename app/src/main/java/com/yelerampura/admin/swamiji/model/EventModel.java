@@ -1,4 +1,4 @@
-package com.example.admin.aryanadmin.model;
+package com.yelerampura.admin.swamiji.model;
 
 public class EventModel {
     private String date;

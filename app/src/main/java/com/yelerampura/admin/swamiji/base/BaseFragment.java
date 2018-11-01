@@ -1,4 +1,4 @@
-package com.example.admin.aryanadmin.base;
+package com.yelerampura.admin.swamiji.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

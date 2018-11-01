@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">aryanadmin</string>
+    <string name="app_name">Swamiji Admin</string>
     <string name="title_home">News</string>
     <string name="title_dashboard">Job</string>
     <string name="title_notifications">Events</string>

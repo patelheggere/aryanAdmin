@@ -1,4 +1,4 @@
-package com.example.admin.aryanadmin.fragments;
+package com.yelerampura.admin.swamiji.fragments;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -15,8 +15,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import com.example.admin.aryanadmin.R;
-import com.example.admin.aryanadmin.model.JobUpdatesModel;
+import com.yelerampura.admin.swamiji.R;
+import com.yelerampura.admin.swamiji.model.JobUpdatesModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

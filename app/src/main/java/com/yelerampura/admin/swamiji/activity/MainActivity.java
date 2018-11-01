@@ -1,4 +1,4 @@
-package com.example.admin.aryanadmin.activity;
+package com.yelerampura.admin.swamiji.activity;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,12 +12,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.admin.aryanadmin.R;
-import com.example.admin.aryanadmin.base.BaseActivity;
-import com.example.admin.aryanadmin.fragments.EventsFragment;
-import com.example.admin.aryanadmin.fragments.GallryFragment;
-import com.example.admin.aryanadmin.fragments.JobFragment;
-import com.example.admin.aryanadmin.fragments.NewsFragment;
+import com.yelerampura.admin.swamiji.R;
+import com.yelerampura.admin.swamiji.base.BaseActivity;
+import com.yelerampura.admin.swamiji.fragments.EventsFragment;
+import com.yelerampura.admin.swamiji.fragments.GallryFragment;
+import com.yelerampura.admin.swamiji.fragments.JobFragment;
+import com.yelerampura.admin.swamiji.fragments.NewsFragment;
 
 public class MainActivity extends BaseActivity implements
         JobFragment.OnFragmentInteractionListener,
@@ -54,7 +54,7 @@ public class MainActivity extends BaseActivity implements
                     fragmentTransaction.commitNowAllowingStateLoss();
 
                     return true;
-                case R.id.navigation_dashboard:
+                /*case R.id.navigation_dashboard:
                     Log.d(TAG, "onNavigationItemSelected: ");
                     if (curFrag != null) {
                         fragmentTransaction.detach(curFrag);
@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity implements
                     fragmentTransaction.setReorderingAllowed(true);
                     fragmentTransaction.commitNowAllowingStateLoss();
 
-                    return true;
+                    return true;*/
                 case R.id.navigation_notifications:
                     if (curFrag != null) {
                         fragmentTransaction.detach(curFrag);

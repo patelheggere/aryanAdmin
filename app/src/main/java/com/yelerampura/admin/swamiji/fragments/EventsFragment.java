@@ -1,4 +1,4 @@
-package com.example.admin.aryanadmin.fragments;
+package com.yelerampura.admin.swamiji.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,8 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.admin.aryanadmin.R;
-import com.example.admin.aryanadmin.model.EventModel;
+import com.yelerampura.admin.swamiji.R;
+import com.yelerampura.admin.swamiji.YelarampuraAdminApplication;
+import com.yelerampura.admin.swamiji.model.EventModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -85,9 +86,10 @@ public class EventsFragment extends Fragment {
         String desc = mEditTextDesc.getText().toString();
         if(desc!=null ||place!=null || date!=null || title!=null)
         {
-            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-            databaseReferenceEnglish = firebaseDatabase.getReference().child("events").child("en");
-            databaseReferenceKannada = firebaseDatabase.getReference().child("events").child("ka");
+            databaseReferenceEnglish = YelarampuraAdminApplication.getFireBaseRef();
+            databaseReferenceKannada = YelarampuraAdminApplication.getFireBaseRef();
+            databaseReferenceEnglish = databaseReferenceEnglish.child("events").child("en");
+            databaseReferenceKannada = databaseReferenceKannada.child("events").child("ka");
             EventModel model1 = new EventModel();
             EventModel model2 = new EventModel();
 
@@ -103,6 +105,19 @@ public class EventsFragment extends Fragment {
 
             databaseReferenceKannada.push().setValue(model2);
             databaseReferenceEnglish.push().setValue(model1);
+
+            mEditTextTitleKannada.setText("");
+            mEditTexDateKannada.setText("");
+            mEditTextPlaceKannada.setText("");
+            mEditTextDescKannada.setText("");
+
+            mEditTextDate.setText("");
+            mEditTextPlace.setText("");
+            mEditTextTitle.setText("");
+            mEditTextDesc.setText("");
+
+
+
         }
         else {
             //Snackbar.make(android.R.id.content, "Enter all the fields", Snackbar.LENGTH_LONG);

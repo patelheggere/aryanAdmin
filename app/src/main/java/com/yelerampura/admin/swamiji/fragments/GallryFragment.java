@@ -1,4 +1,4 @@
-package com.example.admin.aryanadmin.fragments;
+package com.yelerampura.admin.swamiji.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -19,8 +19,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.admin.aryanadmin.R;
-import com.example.admin.aryanadmin.model.GalleryModel;
+import com.yelerampura.admin.swamiji.R;
+import com.yelerampura.admin.swamiji.YelarampuraAdminApplication;
+import com.yelerampura.admin.swamiji.model.GalleryModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -92,9 +93,10 @@ public class GallryFragment extends Fragment {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        kannada = firebaseDatabase.getReference().child("gallery").child("ka");
-        english = firebaseDatabase.getReference().child("gallery").child("en");
+        kannada = YelarampuraAdminApplication.getFireBaseRef();
+        english = YelarampuraAdminApplication.getFireBaseRef();
+        kannada = kannada.child("gallery").child("ka");
+        english = english.child("gallery").child("en");
 
         mEditTextEnglish = mView.findViewById(R.id.en_et_desc);
         mEditTextKannada = mView.findViewById(R.id.kn_et_desc);
@@ -126,6 +128,31 @@ public class GallryFragment extends Fragment {
         buttonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mEditTextEnglish.getText().toString()==null ||mEditTextEnglish.getText().toString().isEmpty() )
+                {
+                    return;
+                }
+                if(textViewURL.getText().toString()==null ||textViewURL.getText().toString().isEmpty() )
+                {
+                    return;
+                }
+                if(mEditTextEnglishTitle.getText().toString()==null ||mEditTextEnglishTitle.getText().toString().isEmpty() )
+                {
+                    return;
+                }
+
+
+                if(mEditTextKannada.getText().toString()==null ||mEditTextKannada.getText().toString().isEmpty() )
+                {
+                    return;
+                }
+
+                if(mEditTextKannadaTitle.getText().toString()==null ||mEditTextKannadaTitle.getText().toString().isEmpty() )
+                {
+                    return;
+                }
+
+
                 GalleryModel model = new GalleryModel();
                 model.setDesc(mEditTextEnglish.getText().toString());
                 model.setUrl(textViewURL.getText().toString());
@@ -136,8 +163,17 @@ public class GallryFragment extends Fragment {
                 model2.setDesc(mEditTextKannada.getText().toString());
                 model2.setTitle(mEditTextKannadaTitle.getText().toString());
 
+
                 kannada.push().setValue(model2);
                 english.push().setValue(model);
+
+                mEditTextEnglish.setText("");
+                mEditTextEnglishTitle.setText("");
+                mEditTextKannada.setText("");
+                mEditTextKannadaTitle.setText("");
+                textViewURL.setText("");
+                textViewURL.setVisibility(View.INVISIBLE);
+                imageViewUploaded.setVisibility(View.GONE);
             }
         });
     }

@@ -1,4 +1,4 @@
-package com.example.admin.aryanadmin;
+package com.yelerampura.admin.swamiji;
 
 import org.junit.Test;
 

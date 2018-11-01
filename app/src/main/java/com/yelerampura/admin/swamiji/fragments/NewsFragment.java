@@ -1,4 +1,4 @@
-package com.example.admin.aryanadmin.fragments;
+package com.yelerampura.admin.swamiji.fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -13,8 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.admin.aryanadmin.R;
-import com.example.admin.aryanadmin.model.NewsModel;
+import com.yelerampura.admin.swamiji.R;
+import com.yelerampura.admin.swamiji.YelarampuraAdminApplication;
+import com.yelerampura.admin.swamiji.model.NewsModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -89,13 +90,15 @@ public class NewsFragment extends Fragment {
     }
 
     private void getData() {
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         String strDate= formatter.format(date);
-        databaseReferenceEnglish = database.getReference().child("en").child("currentaffairs").child(strDate);
-        databaseReferenceKannada = database.getReference().child("ka").child("currentaffairs").child(strDate);
+        databaseReferenceEnglish = YelarampuraAdminApplication.getFireBaseRef();
+        databaseReferenceKannada = YelarampuraAdminApplication.getFireBaseRef();
+        databaseReferenceEnglish = databaseReferenceEnglish.child("message").child("en").child("hitanudi").child(strDate);
+        databaseReferenceKannada = databaseReferenceKannada.child("message").child("ka").child("hitanudi").child(strDate);
 
+        Log.d(TAG, "getData: "+databaseReferenceEnglish.toString());
         databaseReferenceEnglish.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -111,7 +114,7 @@ public class NewsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.d(TAG, "onCancelled: english");
             }
         });
 
@@ -127,7 +130,7 @@ public class NewsFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.d(TAG, "onCancelled: kananda");
             }
         });
 
