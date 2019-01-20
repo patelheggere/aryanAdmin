@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.admin.aryanadmin.AdminBaseApplication;
 import com.example.admin.aryanadmin.R;
 import com.example.admin.aryanadmin.model.EventModel;
 import com.google.firebase.database.DatabaseReference;
@@ -86,8 +87,10 @@ public class EventsFragment extends Fragment {
         if(desc!=null ||place!=null || date!=null || title!=null)
         {
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-            databaseReferenceEnglish = firebaseDatabase.getReference().child("events").child("en");
-            databaseReferenceKannada = firebaseDatabase.getReference().child("events").child("ka");
+            databaseReferenceEnglish = AdminBaseApplication.getFireBaseRef();
+            databaseReferenceKannada = AdminBaseApplication.getFireBaseRef();
+            databaseReferenceEnglish = databaseReferenceEnglish.child("events").child("en");
+            databaseReferenceKannada = databaseReferenceKannada.child("events").child("ka");
             EventModel model1 = new EventModel();
             EventModel model2 = new EventModel();
 

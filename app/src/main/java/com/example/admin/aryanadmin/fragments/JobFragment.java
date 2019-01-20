@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import com.example.admin.aryanadmin.AdminBaseApplication;
 import com.example.admin.aryanadmin.R;
 import com.example.admin.aryanadmin.model.JobUpdatesModel;
 import com.google.firebase.database.DatabaseReference;
@@ -124,8 +125,10 @@ public class JobFragment extends Fragment {
         // Inflate the layout for this fragment
         mView =  inflater.inflate(R.layout.fragment_job, container, false);
         FirebaseDatabase  firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference2 = firebaseDatabase.getReference().child("ka").child("job");
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("en").child("job");
+        databaseReference2 = AdminBaseApplication.getFireBaseRef();
+        databaseReference = AdminBaseApplication.getFireBaseRef();
+        databaseReference2 =databaseReference2 .child("ka").child("job");
+        databaseReference = databaseReference.child("en").child("job");
         initEnglishView();
         initkannadaViews();
 

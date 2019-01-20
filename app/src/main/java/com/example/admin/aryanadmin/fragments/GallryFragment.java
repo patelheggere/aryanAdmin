@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.admin.aryanadmin.AdminBaseApplication;
 import com.example.admin.aryanadmin.R;
 import com.example.admin.aryanadmin.model.GalleryModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -92,9 +93,12 @@ public class GallryFragment extends Fragment {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        kannada = firebaseDatabase.getReference().child("gallery").child("ka");
-        english = firebaseDatabase.getReference().child("gallery").child("en");
+
+        kannada = AdminBaseApplication.getFireBaseRef();
+        english = AdminBaseApplication.getFireBaseRef();
+
+        kannada = kannada.child("gallery").child("ka");
+        english = english.child("gallery").child("en");
 
         mEditTextEnglish = mView.findViewById(R.id.en_et_desc);
         mEditTextKannada = mView.findViewById(R.id.kn_et_desc);

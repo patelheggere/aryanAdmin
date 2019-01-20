@@ -17,13 +17,15 @@ import com.example.admin.aryanadmin.base.BaseActivity;
 import com.example.admin.aryanadmin.fragments.EventsFragment;
 import com.example.admin.aryanadmin.fragments.GallryFragment;
 import com.example.admin.aryanadmin.fragments.JobFragment;
+import com.example.admin.aryanadmin.fragments.MCQQuestionFragment;
 import com.example.admin.aryanadmin.fragments.NewsFragment;
 
 public class MainActivity extends BaseActivity implements
         JobFragment.OnFragmentInteractionListener,
         NewsFragment.OnFragmentInteractionListener,
         EventsFragment.OnFragmentInteractionListener,
-        GallryFragment.OnFragmentInteractionListener {
+        GallryFragment.OnFragmentInteractionListener,
+        MCQQuestionFragment.OnFragmentInteractionListener {
 
     private TextView mTextMessage;
 
@@ -94,6 +96,21 @@ public class MainActivity extends BaseActivity implements
                     if (fragment == null) {
                         fragment = new GallryFragment();
                         fragmentTransaction.add(R.id.contentFrame, fragment, "GALLERY");
+                    } else {
+                        fragmentTransaction.attach(fragment);
+                    }
+                    fragmentTransaction.setPrimaryNavigationFragment(fragment);
+                    fragmentTransaction.setReorderingAllowed(true);
+                    fragmentTransaction.commitNowAllowingStateLoss();
+                    return true;
+                case R.id.navigation_question:
+                    if (curFrag != null) {
+                        fragmentTransaction.detach(curFrag);
+                    }
+                    fragment = fragmentManager.findFragmentByTag("QUESTION");
+                    if (fragment == null) {
+                        fragment = new MCQQuestionFragment();
+                        fragmentTransaction.add(R.id.contentFrame, fragment, "QUESTION");
                     } else {
                         fragmentTransaction.attach(fragment);
                     }

@@ -19,4 +19,5 @@
     <string name="website">Website:</string>
     <string name="date_format">dd/mm/yyyy</string>
     <string name="gallery">Gallery</string>
+    <string name="Question">Questions</string>
 </resources>

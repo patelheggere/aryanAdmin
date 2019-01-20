@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.admin.aryanadmin.AdminBaseApplication;
 import com.example.admin.aryanadmin.R;
 import com.example.admin.aryanadmin.model.NewsModel;
 import com.google.firebase.database.DataSnapshot;
@@ -89,12 +90,14 @@ public class NewsFragment extends Fragment {
     }
 
     private void getData() {
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         String strDate= formatter.format(date);
-        databaseReferenceEnglish = database.getReference().child("en").child("currentaffairs").child(strDate);
-        databaseReferenceKannada = database.getReference().child("ka").child("currentaffairs").child(strDate);
+        databaseReferenceEnglish = AdminBaseApplication.getFireBaseRef();
+        databaseReferenceKannada = AdminBaseApplication.getFireBaseRef();
+
+        databaseReferenceEnglish = databaseReferenceEnglish.child("en").child("currentaffairs").child(strDate);
+        databaseReferenceKannada = databaseReferenceKannada.child("ka").child("currentaffairs").child(strDate);
 
         databaseReferenceEnglish.addValueEventListener(new ValueEventListener() {
             @Override
@@ -151,8 +154,8 @@ public class NewsFragment extends Fragment {
             model.setCount(count+1);
             model2.setCount(count+1);
             count = count+1;
-            model.setMessage(msg1+"\n"+count+". "+editTextEnglish.getText().toString());
-            model2.setMessage(msg2+"\n"+count+". "+editTextKannada.getText().toString());
+            model.setMessage(msg1+"\n\n"+count+". "+editTextEnglish.getText().toString());
+            model2.setMessage(msg2+"\n\n"+count+". "+editTextKannada.getText().toString());
         }
 
       databaseReferenceEnglish.setValue(model);
